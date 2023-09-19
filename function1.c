@@ -77,8 +77,9 @@ int print_octal(va_list types, char buffer[],
 }
 
 /* PRINT UNSIGNED NUMBER IN HEXADECIMAL */
+/* PRINT HEX NUMBER IN LOWER OR UPPER */
 /**
- * print_hexadecimal - Prints an unsigned number in hexadecimal notation
+ * print_hexa - Prints a hexadecimal number in lower or upper case
  * @types: List of arguments
  * @buffer: Buffer array to handle print
  * @flags: Calculates active flags
@@ -87,8 +88,8 @@ int print_octal(va_list types, char buffer[],
  * @size: Size specifier
  * Return: Number of characters printed
  */
-int (print_hexa(va_list types, char buffer[],
-                     int flags, int width, int precision, int size))
+int print_hexa(va_list types, char buffer[],
+               int flags, int width, int precision, int size)
 {
     return (print_hexa(types, "0123456789ABCDEF", buffer, flags, 'X', width, precision, size));
 }
@@ -107,9 +108,9 @@ int (print_hexa(va_list types, char buffer[],
 int print_hexa_upper(va_list types, char buffer[],
                      int flags, int width, int precision, int size)
 {
-    return (print_hexa(types, "0123456789ABCDEF", buffer,
-                       flags, 'X', width, precision, size));
+    return (print_hexa(types, "0123456789ABCDEF", buffer, flags, 'X', width, precision, size));
 }
+
 
 /************** PRINT HEX NUMBER IN LOWER OR UPPER **************/
 /**
