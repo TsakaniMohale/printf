@@ -1,67 +1,35 @@
 #include "main.h"
 
-void print_buffer(char buffer[], int *buff_ind);
-
 /**
- * _printf - Custom printf function
- * @format: The format string.
- * Return: The number of characters printed.
+ * get_flags - Calculates active flags
+ * @format: Formatted string in which to print the arguments
+ * @i: take a parameter.
+ * Return: Flags:
  */
-int _printf(const char *format, ...)
+int get_flags(const char *format, int *i)
 {
-    int i, printed_chars = 0;
-    int flags, width, precision, size, buff_ind = 0;
-    va_list list;
-    char buffer[BUFF_SIZE];
+	/* - + 0 # ' ' */
+	/* 1 2 4 8  16 */
+	int j, curr_i;
+	int flags = 0;
+	const char FLAGS_CH[] = {'-', '+', '0', '#', ' ', '\0'};
+	const int FLAGS_ARR[] = {F_MINUS, F_PLUS, F_ZERO, F_HASH, F_SPACE, 0};
 
-    if (format == NULL)
-        return (-1);
+	for (curr_i = *i + 1; format[curr_i] != '\0'; curr_i++)
+	{
+		for (j = 0; FLAGS_CH[j] != '\0'; j++)
+			if (format[curr_i] == FLAGS_CH[j])
+			{
+				flags |= FLAGS_ARR[j];
+				break;
+			}
 
-    va_start(list, format);
+		if (FLAGS_CH[j] == 0)
+			break;
+	}
 
-    for (i = 0; format[i] != '\0'; i++)
-    {
-        if (format[i] != '%')
-        {
-            buffer[buff_ind++] = format[i];
-            if (buff_ind == BUFF_SIZE)
-                print_buffer(buffer, &buff_ind);
-            printed_chars++;
-        }
-        else
-        {
-            print_buffer(buffer, &buff_ind);
-            flags = get_flags(format, &i);
-            width = get_width(format, &i, list);
-            precision = get_precision(format, &i, list);
-            size = get_size(format, &i);
-            i++;
-            printed_chars += handle_print(format, &i, list, buffer,
-                                           flags, width, precision, size);
-            if (printed_chars == -1)
-            {
-                va_end(list);
-                return (-1);
-            }
-        }
-    }
+	*i = curr_i - 1;
 
-    print_buffer(buffer, &buff_ind);
-    va_end(list);
-
-    return (printed_chars);
-}
-
-/**
- * print_buffer - Prints the contents of the buffer if it exists
- * @buffer: Array of characters
- * @buff_ind: Index at which to add the next character, represents the length.
- */
-void print_buffer(char buffer[], int *buff_ind)
-{
-    if (*buff_ind > 0)
-        write(1, buffer, *buff_ind);
-
-    *buff_ind = 0;
+	return (flags);
 }
 
