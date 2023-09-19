@@ -1,6 +1,6 @@
 #include "main.h"
 
-/************************* PRINT UNSIGNED NUMBER *************************/
+/** PRINT UNSIGNED NUMBER */
 /**
  * print_unsigned - Prints an unsigned number
  * @types: List of arguments
@@ -87,7 +87,7 @@ int print_octal(va_list types, char buffer[],
  * @size: Size specifier
  * Return: Number of characters printed
  */
-int print_hexadecimal(va_list types, char buffer[],
+int print_hexa(va_list types, char buffer[],
                      int flags, int width, int precision, int size)
 {
     return (print_hexa(types, "0123456789abcdef", buffer,
