@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * get_flags - Calculatesthe flags
+ * get_flags - Calculates the flags
  * @format: Formatted string to print the arguments
  * @i: take the parameter.
  * Return: Flags:
