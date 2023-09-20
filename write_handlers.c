@@ -10,7 +10,7 @@
  * @precision: precision specified
  * @size: Size specifier
  *
- * Return: Number of chars printed.
+ * Return: Number of chars to be printed.
  */
 int handle_write_char(char c, char buffer[],
 	int flags, int width, int precision, int size)
@@ -50,7 +50,7 @@ int handle_write_char(char c, char buffer[],
  * @is_negative: Lists arguments
  * @ind: char types.
  * @buffer: Buffer array to handle print
- * @flags:  Calculates flags
+ * @flags:  Calculates the flags
  * @width: get width.
  * @precision: precision specified
  * @size: Size specifier
@@ -85,7 +85,7 @@ int write_number(int is_negative, int ind, char buffer[],
  * @flags: Flags
  * @width: width
  * @prec: Precision specifier
- * @length: Number length
+ * @length: Number the length
  * @padd: Pading char
  * @extra_c: Extra char
  *
