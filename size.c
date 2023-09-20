@@ -3,7 +3,7 @@
 /**
  * get_size - Calculates the size 
  * @format: Formatted string to print the arguments
- * @i: Lists arguments to be printed.
+ * @i: the lists arguments to be printed.
  *
  * Return: Precision.
  */
